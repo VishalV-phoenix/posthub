@@ -1,16 +1,16 @@
 from fastapi import FastAPI,HTTPException,File,UploadFile,Form,Depends
-from app.schemas import PostCreate,PostResponse,UserRead,UserCreate,UserUpdate  
-from app.db import Post, User,create_db_and_tables,get_async_session
+from schemas import PostCreate,PostResponse,UserRead,UserCreate,UserUpdate  
+from db import Post, User,create_db_and_tables,get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from contextlib import asynccontextmanager  
 from sqlalchemy import select
-from app.images import imagekit
+from images import imagekit
 from imagekitio.models.UploadFileRequestOptions import UploadFileRequestOptions
 import shutil
 import os
 import uuid
 import tempfile
-from app.users import current_active_user,auth_backend,fastapi_users
+from users import current_active_user,auth_backend,fastapi_users
 
 @asynccontextmanager
 async def lifespan(app:FastAPI):
